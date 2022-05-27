@@ -18,10 +18,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    score: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     healthyscore: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -33,11 +29,6 @@ module.exports = (sequelize) => {
     img: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    createdInDb: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
     },
   },{
     timestamps: false

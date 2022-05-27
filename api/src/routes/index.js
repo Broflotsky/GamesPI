@@ -1,5 +1,6 @@
 const { Router } = require('express');
-//const {  API_KEY } = process.env;
+const {API_KEY} = process.env;
+require("dotenv").config();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
@@ -12,17 +13,17 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getinfoApi = async () => { 
-    const urlApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a1ec4fc2db0047f38ca1f55f92fef780&addRecipeInformation=true&number=200`)
+    const urlApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=878fb1bb12534733bfd58bf938b9a42b&addRecipeInformation=true&number=100`)
         const infoApi = urlApi.data.results.map( (c) => {
         return {
             id: c.id,
             name: c.title,
             resume: c.summary,
-            score: c.spoonacularScore,
+            // score: c.spoonacularScore,
             healthyscore: c.healthScore,
-            steps: c.steps,
+            steps: c.analyzedInstructions.map((el) => el),
             img: c.image,
-            diets: c.diets,
+            diets: c.diets.map((c) => c),
         }
     })
     return infoApi; 
@@ -58,10 +59,12 @@ const allInfo = async () => {
 router.get('/recipes', async (req,res) => {
     const name = req.query.name
     const allinf = await allInfo();
+        if(name){        
         let reciname = await allinf.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
         reciname.length ?
         res.status(200).send(reciname) :
         res.status(404).send('No se encontro una receta con estos parametros')
+        } else { res.status(200).send(allinf) }
 });
 
 router.get('/recipes/:idRecipe', async (req,res) => {
@@ -95,14 +98,11 @@ router.get('/types', async (req,res) => {
 })
 
 router.post('/types', async(req,res) => {
-    const { name, resume, score, healthyscore, steps, img, diets, createdInDb } = req.body;
+    const { name, resume, healthyscore, steps, img, diets, createdInDb } = req.body;
 
-    if(!name || !resume ) { res.status(400).send('Los campos con (*) son obligatorios') }
-    else {
         let creaRecipe = await Recipe.create({
             name, 
-            resume, 
-            score, 
+            resume,  
             healthyscore, 
             steps,
             img, 
@@ -113,8 +113,9 @@ router.post('/types', async(req,res) => {
             where: {name: diets}
         })
         creaRecipe.addDiets(dietsDb);
+        res.status(200).send('Receta creada correctamente')
     }
-})
+)
 
 
 

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: url('https://previews.123rf.com/images/lexiclaus/lexiclaus1905/lexiclaus190500183/123747011-vector-seamless-pattern-of-black-and-white-jam-jars-monochrome-repeat-background-with-preserved-food.jpg'); 
 }
 
 .App-logo {
@@ -25,7 +26,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #074e61;
 }
 
 @keyframes App-logo-spin {

@@ -1,0 +1,50 @@
+.header{
+    background-image: url('https://i.postimg.cc/PxJDmzJS/food-background-breakfast-yogurt-granola-muesli-strawberries-banner-image-website-gray-concrete-tabl.jpg'); 
+    width: 100%;
+    background-size: 100%;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ul{
+    width: 50%;
+    height: 250px;
+    display:flex;
+    align-items: center;
+    justify-content:space-evenly;
+    
+}
+.li{
+    display:inline-block;
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.input{
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.buttoninput{
+    font-size: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.Link{
+    
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: rgb(5, 5, 5);
+    opacity: 80%;
+    width: 300px;
+    height: 50px;
+    letter-spacing: 2px;
+
+}
+

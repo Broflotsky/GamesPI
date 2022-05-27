@@ -1,0 +1,25 @@
+
+
+
+.li{
+    display: flex;
+    padding: 5px 2px;
+
+}
+.buttonpage{
+    display: inline-flex;
+    justify-content: center;
+    width: 50px;
+    background-color: rgb(5, 5, 5);
+    opacity: 80%;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.buttonpage .a{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 30px;
+}
